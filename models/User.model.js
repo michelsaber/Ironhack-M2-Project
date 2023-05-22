@@ -27,6 +27,7 @@ const userSchema = new Schema(
     }, 
     // ref: Reference to collection in db
     eventsCreated: [{ type: Schema.Types.ObjectId, ref: "festival" }], 
+    favorites: [{type: String }],
   }, 
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

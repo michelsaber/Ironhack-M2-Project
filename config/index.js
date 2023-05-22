@@ -20,7 +20,7 @@ const path = require("path");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const MONGO_URI =
-  process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/Ironhack-M2-Project";
+  process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/Festiva2";
 
 // Middleware configuration
 module.exports = (app) => {

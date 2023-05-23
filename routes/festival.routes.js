@@ -2,7 +2,6 @@ const express = require("express");
 const FestivalModel = require("../models/Festival.model");
 const router = express.Router();
 const isLoggedIn = require("../middlewares/isLoggedIn");
-const isAuthor = require("../middlewares/isAuthor");
 const fileUploader = require("../config/cloudinary.config");
 const UserModel = require("../models/User.model");
 const ArtistModel = require("../models/Artist.model");
@@ -87,7 +86,7 @@ router.get("/festival/:festivalID", async (req, res) => {
   });
 });
 
-router.get("/festival/:festivalID/edit", isLoggedIn, isAuthor, async (req, res) => {
+router.get("/festival/:festivalID/edit", isLoggedIn, async (req, res) => {
   //later, if we add artists, we have to add here .populate("lineup")
   const { festivalID } = req.params;
   const festivalToEdit = await FestivalModel.findById(festivalID);
@@ -107,7 +106,7 @@ router.post("/festival/:festivalID", isLoggedIn, async (req, res) => {
 });
 
 // route to delete a festival
-router.post("/festival/:festivalID/delete", isLoggedIn, isAuthor, async (req, res) => {
+router.post("/festival/:festivalID/delete", isLoggedIn, async (req, res) => {
   try {
     const { festivalID } = req.params;
     await FestivalModel.findByIdAndDelete(festivalID);
